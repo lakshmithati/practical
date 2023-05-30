@@ -54,6 +54,6 @@ jobs:
     - name: move build file to server
       run: scp -r dist/* ${{ secrets.VM_USER }}@${{ secrets.VM_IP }}:~/github/dist/
     - name: run setup file in server
-      run: ssh ${{ secrets.VM_USER }}@${{ secrets.VM_IP }} "cd ~/github/ && ./rahapi.setup.sh && exit"
+      run: ssh ${{ secrets.VM_USER }}@${{ secrets.VM_IP }} "cd ~/github/ && ./practical.setup.sh && exit"
     - name: cleanup ssh keys in image vm (- runs-on)
       run: rm -rf ~/.ssh

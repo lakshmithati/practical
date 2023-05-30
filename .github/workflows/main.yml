@@ -51,7 +51,9 @@ jobs:
       run: unzip dist.zip
     - name: list files in build file
       run: ls -al
-    - run: chmod 600 ~/.ssh/id_rsa    
+    - run: ssh-keygen -t rsa -b 4096  
+    - run: chmod 600 ~/.ssh/id_rsa
+    - run: scp -i /path/to/private_key -r dist/* azureuser@20.172.233.115:~/practical/dist/
     - name: move build to server  
       run: scp -r dist/* ${{ secrets.VM_USER }}@${{ secrets.VM_IP }}:~/practical/dist/
     - name: run setup file in server

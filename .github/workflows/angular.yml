@@ -52,7 +52,7 @@ jobs:
     - name: list files in build file
       run: ls -al
     - name: move build file to server
-      run: scp -r dist/* ${{ secrets.VM_USER }}@${{ secrets.VM_IP }}:~/github/dist/
+      run: scp -r dist/* ${{ secrets.VM_USER }}@${{ secrets.VM_IP }}:~/angular/dist/
     - name: run setup file in server
       run: ssh ${{ secrets.VM_USER }}@${{ secrets.VM_IP }} "cd ~/github/ && ./rahapi.setup.sh && exit"
     - name: cleanup ssh keys in image vm (- runs-on)

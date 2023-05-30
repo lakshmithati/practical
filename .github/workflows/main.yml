@@ -51,9 +51,7 @@ jobs:
       run: unzip dist.zip
     - name: list files in build file
       run: ls -al
-    - run: chmod 600 ~/.ssh/id_rsa  
-    - name: ssh 
-      run: ssh -T lakshmithati@github.com  
+    - run: chmod 600 ~/.ssh/id_rsa    
     - name: move build to server  
       run: scp -r dist/* ${{ secrets.VM_USER }}@${{ secrets.VM_IP }}:~/practical/dist/
     - name: run setup file in server

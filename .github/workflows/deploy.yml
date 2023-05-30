@@ -1,0 +1,29 @@
+name: deploy angular
+on: 
+  -  push
+jobs: 
+  deploy_job:
+    name: deploy
+    runs-on: ubuntu-20.04
+    steps:
+    - name: install ssh keys in image vm (- runs-on)
+      run: |
+        install -m 600 -D /dev/null ~/.ssh/id_rsa
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+        ssh-keyscan -H ${{ secrets.VM_IP }} > ~/.ssh/known_hosts
+    - name: Download Build artifact from build job
+      uses: actions/download-artifact@v3
+      with:
+        name: build
+    - name: list files in build file
+      run: ls -al
+    - name: Unzip the downloaded build file
+      run: unzip dist.zip
+    - name: list files in build file
+      run: ls -al
+    - name: move build file to server
+      run: scp -r dist/* ${{ secrets.VM_USER }}@${{ secrets.VM_IP }}:~/github/dist/
+    - name: run setup file in server
+      run: ssh ${{ secrets.VM_USER }}@${{ secrets.VM_IP }} "cd ~/github/ && ./practical.setup.sh && exit"
+    - name: cleanup ssh keys in image vm (- runs-on)
+      run: rm -rf ~/.ssh

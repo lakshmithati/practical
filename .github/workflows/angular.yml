@@ -53,10 +53,10 @@ jobs:
       run: ls -al
     - uses: shimataro/ssh-key-action@v2
       with:
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          key: ${{ secrets.SSH_KEY }}
           name: id_rsa
           known_hosts: ${{ secrets.VM_IP }}
     - name: run setup file in server
-      run: ssh ${{ secrets.VM_USER }}@${{ secrets.VM_IP }} "cd ~/lakshmithati/ && ./practical.setup.sh && exit"
+      run: ssh ${{ secrets.VM_USER }}@${{ secrets.VM_IP }} "cd ~/lakshmithati/ && ./angular/practical.setup.sh && exit"
     - name: cleanup ssh keys in image vm (- runs-on)
       run: rm -rf ~/.ssh

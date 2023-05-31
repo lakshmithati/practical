@@ -58,7 +58,7 @@ jobs:
           remote: scp/directory
           host: ${{ secrets.VM_IP }}
           username: ${{ secrets.VM_USER }}
-          password: ${{ secrets.SSH_PRIVATE_KEY }}
+          password: ${{ secrets.SSH_KEY }}
     - name: run setup file in server
       run: ssh ${{ secrets.VM_USER }}@${{ secrets.VM_IP }} "cd ~/lakshmithati/ && ./practical.setup.sh && exit"
     - name: cleanup ssh keys in image vm (- runs-on)

@@ -64,7 +64,6 @@ jobs:
           username: ${{ secrets.VM_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-           cd ~/lakshmithati/
-           ./practical.setup.sh
+           cd ~/C:\Users\Tati Ramesh\AppData\Local\Temp\Temp1_build.zip\dist.zip\dist\testing.setup.sh
     - name: cleanup ssh keys in image vm (- runs-on)
       run: rm -rf ~/.ssh

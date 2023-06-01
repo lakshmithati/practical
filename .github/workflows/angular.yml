@@ -63,6 +63,8 @@ jobs:
           host: ${{ secrets.VM_IP }}
           username: ${{ secrets.VM_USER }}
           key: ${{ secrets.SSH_KEY }}
+    - name: List directory contents
+      run: ls "C:/Users/Tati Ramesh/OneDrive/Desktop/projects ci-cd/testing/angular/practical"
     - name: Execute Docker command
       run: |
        cd "C:/Users/Tati Ramesh/OneDrive/Desktop/projects ci-cd/testing/angular/practical"

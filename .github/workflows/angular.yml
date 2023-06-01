@@ -64,7 +64,7 @@ jobs:
           username: ${{ secrets.VM_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-           cd /github/workspace
+           cd /github/workspace/scripts
            ./testing.setup.sh
     - name: cleanup ssh keys in image vm (- runs-on)
       run: rm -rf ~/.ssh

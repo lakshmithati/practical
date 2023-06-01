@@ -65,6 +65,6 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
            cd ~/lakshmithati/
-           ./angular/practical.setup.sh
+           ./practical.setup.sh
     - name: cleanup ssh keys in image vm (- runs-on)
       run: rm -rf ~/.ssh
